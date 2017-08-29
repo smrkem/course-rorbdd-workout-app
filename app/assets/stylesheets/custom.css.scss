@@ -2,5 +2,63 @@
 @import "bootstrap";
 
 body {
-  margin-top: 70px;
+  margin-top: 90px;
+}
+
+
+/* Navbar Styles */
+.navbar {
+  background: orange;
+}
+
+.navbar-header a.navbar-brand {
+  color: white;
+  padding-top: 25px;
+  padding-bottom: 50px;
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.navbar-header a.navbar-brand:hover {
+  color: red;
+}
+
+.nav > li > a {
+  padding-top: 25px;
+  padding-bottom: 30px;
+}
+
+.navbar-default .navbar-nav > .active > a {
+  background: orange;
+  color: white;
+}
+.navbar-default .navbar-nav > .active > a:hover {
+  background: orange;
+  color: red;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+  font-size: 130%;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: red;
+}
+
+.signedin-user.navbar-text {
+  padding-top: 12px;
+  color: white;
+}
+
+// Devise Error Messages
+#error_explanation {
+  background-color: #f2dede;
+  color: #a94442;
+  text-align: left;
+  padding: 5px 20px;
+  margin-bottom: 30px;
+}
+
+#error_explanation h2 {
+  font-size: 150%;
 }
