@@ -28,7 +28,7 @@ include Warden::Test::Helpers
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include FactoryGirl::Syntax::Methods
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
