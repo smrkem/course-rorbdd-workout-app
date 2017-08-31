@@ -15,6 +15,11 @@ RSpec.describe Exercise, type: :model do
     expect(user).not_to be_valid
   end
 
+  it "is invalid if duration is not a number" do
+    user = build(:exercise, duration_in_min: "abc")
+    expect(user).not_to be_valid
+  end
+
   it "is invalid without a date" do
     user = build(:exercise, workout_date: nil)
     expect(user).not_to be_valid
