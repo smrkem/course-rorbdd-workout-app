@@ -6,27 +6,38 @@ RSpec.describe Exercise, type: :model do
   end
 
   it "is invalid without a user" do
-    user = build(:exercise, user: nil)
-    expect(user).not_to be_valid
+    exercise = build(:exercise, user: nil)
+    expect(exercise).not_to be_valid
   end
 
   it "is invalid without a duration" do
-    user = build(:exercise, duration_in_min: nil)
-    expect(user).not_to be_valid
+    exercise = build(:exercise, duration_in_min: nil)
+    expect(exercise).not_to be_valid
   end
 
   it "is invalid if duration is not a number" do
-    user = build(:exercise, duration_in_min: "abc")
-    expect(user).not_to be_valid
+    exercise = build(:exercise, duration_in_min: "abc")
+    expect(exercise).not_to be_valid
   end
 
   it "is invalid without a date" do
-    user = build(:exercise, workout_date: nil)
-    expect(user).not_to be_valid
+    exercise = build(:exercise, workout_date: nil)
+    expect(exercise).not_to be_valid
   end
 
   it "is invalid without a workout name" do
-    user = build(:exercise, workout: nil)
-    expect(user).not_to be_valid
+    exercise = build(:exercise, workout: nil)
+    expect(exercise).not_to be_valid
+  end
+
+  it "should return exercises for last 7 days" do
+    (1..6).each do |n|
+      create(:exercise, workout: "Exercise #{n}", workout_date: n.days.ago)
+    end
+    ex7 = create(:exercise, workout: "Exercise 7", workout_date: 8.days.ago)
+
+    expect(Exercise.all.count).to eq 7
+    expect(Exercise.for_last_week.count).to eq 6
+    expect(Exercise.for_last_week.include?(ex7)).to eq false
   end
 end
